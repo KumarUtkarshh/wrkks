@@ -1,10 +1,8 @@
-import AnimatedIconButton from "@/components/AnimatedBtn";
 import DomainInputField from "@/components/DomainInputField";
+import ResumeEditor from "@/components/ResumeEditor";
 import StatusBtn from "@/components/StatusBtn";
 import { Button } from "@/components/ui/button";
-import EyeIcon from "@/components/ui/eye-icon";
 import LinkIcon from "@/components/ui/link-icon";
-import PenIcon from "@/components/ui/pen-icon";
 
 export default function Site() {
   const isLive = true;
@@ -30,12 +28,7 @@ export default function Site() {
             </Button>
           </div>
         </div>
-        <div className="flex tracking-wide justify-start gap-2.5 max-sm:w-full md:w-[80vw] max-sm:px-6">
-          <AnimatedIconButton icon={<EyeIcon className="-me-0.5" />}>
-            Preview
-          </AnimatedIconButton>
-          <AnimatedIconButton icon={<PenIcon />}>Edit</AnimatedIconButton>
-        </div>
+        <ResumeEditor />
       </div>
     </div>
   );

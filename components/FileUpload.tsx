@@ -27,7 +27,7 @@ export default function FileUpload() {
     },
   ] = useFileUpload({
     maxSize,
-    // accept: "application/pdf",
+    accept: "application/pdf",
   });
 
   const file = files[0];

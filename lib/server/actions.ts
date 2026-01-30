@@ -1,11 +1,18 @@
+"use server";
+
+import { Resume } from "../types";
+
 export async function parseResume(file: File) {
   const formData = new FormData();
   formData.append("file", file);
 
-  const res = await fetch("/api/parse-resume", {
-    method: "POST",
-    body: formData,
-  });
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/parse-resume`,
+    {
+      method: "POST",
+      body: formData,
+    },
+  );
 
   const data = await res.json();
 
@@ -14,4 +21,25 @@ export async function parseResume(file: File) {
   }
 
   return data;
+}
+
+export async function structureResume(text: string) {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/extract-info`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ text }),
+    },
+  );
+
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.msg || "Failed to structure resume");
+  }
+
+  const data = await res.json();
+  return data as Resume; // this is structured Resume JSON
 }

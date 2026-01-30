@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import OpenAI from "openai";
+import OpenAI, { APIError } from "openai";
 
 const openai = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
   apiKey: process.env.OPENROUTER_API_KEY,
 });
 
@@ -82,8 +83,9 @@ ${text}
 
     return NextResponse.json(parsedJSON);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
-      { msg: "Failed to parse PDF", details: (error as Error).message },
+      { msg: "Failed to parse PDF", details: (error as APIError).message },
       { status: 500 },
     );
   }
