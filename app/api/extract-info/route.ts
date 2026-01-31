@@ -18,37 +18,63 @@ Return ONLY JSON (no markdown, no explanation).
 Schema:
 {
   "personalInfo": {
-    "name": string,
-    "title": string,
-    "location": string,
-    "phone": string,
-    "email": string,
-    "website": string
+    "name": "string",
+    "title": "string",
+    "location": "string",
+    "phone": "string",
+    "email": "string",
+    "website": "string",
+    "linkedin": "string",
+    "github": "string"
   },
-  "summary": string,
+  "summary": "string",
   "skills": {
-    "languages": string[],
-    "frameworksAndTools": string[],
-    "softSkills": string[]
+    "languages": ["string"],
+    "frameworksAndTools": ["string"],
+    "libraries": ["string"],
+    "softSkills": ["string"]
   },
-  "projects": [
+  "experience": [
     {
-      "name": string,
-      "role": string,
-      "duration": string,
-      "link": string | null,
-      "description": string[],
-      "technologies": string[]
+      "company": "string",
+      "position": "string",
+      "location": "string",
+      "startDate": "string",
+      "endDate": "string",
+      "isCurrentRole": "boolean",
+      "description": ["string"],
+      "technologies": ["string"]
     }
   ],
-  "education": {
-    "university": string,
-    "degree": string,
-    "branch": string,
-    "sgpa": string,
-    "duration": string
-  },
-  "extracurricular": string[]
+  "projects": [
+    {
+      "name": "string",
+      "role": "string",
+      "startDate": "string",
+      "endDate": "string",
+      "link": "string | null",
+      "description": ["string"],
+      "technologies": ["string"]
+    }
+  ],
+  "education": [
+    {
+      "university": "string",
+      "degree": "string",
+      "branch": "string",
+      "location": "string",
+      "sgpa": "string",
+      "startDate": "string",
+      "endDate": "string"
+    }
+  ],
+  "extracurricular": ["string"],
+  "customSections": [
+    {
+      "title": "string",
+      "items": ["string"]
+    }
+  ]
 }
 
 Resume Text:
