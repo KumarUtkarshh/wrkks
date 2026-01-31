@@ -30,6 +30,8 @@ export const ResumeEditor = () => {
     "text-2xl text-start font-semibold text-foreground mb-4";
   const labelClass = "text-start font-medium text-foreground mb-1 block";
   const cardClass = "relative border rounded-lg p-5 space-y-4 mb-4 bg-card";
+  const buttonClass =
+    "w-full border-dashed border-2 bg-card py-6 text-muted-foreground";
 
   // Helper to add new items
   const addExperience = () => {
@@ -153,11 +155,11 @@ export const ResumeEditor = () => {
                 <div>
                   <label className={labelClass}>Twitter/X</label>
                   <Input
-                    value={resume.personalInfo.title || ""} // Using 'title' as a fallback if you don't have a twitter type yet
+                    value={resume.personalInfo.twitter}
                     onChange={(e) =>
                       updatePersonalInfo({ title: e.target.value })
                     }
-                    placeholder="Job Title or Twitter"
+                    placeholder="Twitter"
                   />
                 </div>
               </div>
@@ -242,7 +244,7 @@ export const ResumeEditor = () => {
                     <div>
                       <label className={labelClass}>Description</label>
                       <Textarea
-                        className="min-h-[100px] resize-none text-sm"
+                        className="min-h-25 resize-none text-sm"
                         value={exp.description.join("\n")}
                         onChange={(e) => {
                           const newExp = [...resume.experience];
@@ -257,7 +259,7 @@ export const ResumeEditor = () => {
               <Button
                 onClick={addExperience}
                 variant="outline"
-                className="w-full border-dashed py-6 text-muted-foreground"
+                className={buttonClass}
               >
                 <Plus size={16} className="mr-2" /> Add Work Experience
               </Button>
@@ -333,7 +335,7 @@ export const ResumeEditor = () => {
               <Button
                 onClick={addEducation}
                 variant="outline"
-                className="w-full border-dashed py-6 text-muted-foreground"
+                className={buttonClass}
               >
                 <Plus size={16} className="mr-2" /> Add Education
               </Button>
@@ -385,6 +387,13 @@ export const ResumeEditor = () => {
                 </div>
               ))}
             </div>
+            <Button
+              onClick={addEducation}
+              variant="outline"
+              className={buttonClass}
+            >
+              <Plus size={16} className="mr-2" /> Add Skills
+            </Button>
             <div className="flex gap-2">
               <Input
                 placeholder="Press Enter to add skill..."
