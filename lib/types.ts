@@ -18,6 +18,7 @@ export interface PersonalInfo {
   website: string;
   linkedin: string; // Standard addition
   github: string; // Standard addition
+  twitter: string; // Standard addition
 }
 
 export interface Experience {

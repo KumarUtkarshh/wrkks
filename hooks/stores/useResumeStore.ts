@@ -1,11 +1,13 @@
 "use client";
 
+import { normalizeResume } from "@/lib/helpers";
 import { Resume } from "@/lib/types";
+import { resume } from "@/output2";
 import { create } from "zustand";
 
 type ResumeStore = {
-  rawText: string; // only the "text" field from PDF JSON
-  resume: Resume | null; // structured parsed resume
+  rawText: string;
+  resume: Resume | null;
 
   setRawText: (text: string) => void;
   setResume: (resume: Resume) => void;
@@ -13,15 +15,20 @@ type ResumeStore = {
   updatePersonalInfo: (info: Partial<Resume["personalInfo"]>) => void;
   updateSummary: (summary: string) => void;
   updateSkills: (skills: Partial<Resume["skills"]>) => void;
+
+  updateExperience: (experience: Resume["experience"]) => void;
   updateProjects: (projects: Resume["projects"]) => void;
   updateEducation: (education: Resume["education"]) => void;
+
+  updateExtracurricular: (extracurricular: Resume["extracurricular"]) => void;
+  updateCustomSections: (customSections: Resume["customSections"]) => void;
 
   reset: () => void;
 };
 
 export const useResumeStore = create<ResumeStore>((set) => ({
   rawText: "",
-  resume: null,
+  resume: normalizeResume(resume),
 
   setRawText: (text) => set({ rawText: text }),
 
@@ -58,6 +65,11 @@ export const useResumeStore = create<ResumeStore>((set) => ({
         : null,
     })),
 
+  updateExperience: (experience) =>
+    set((state) => ({
+      resume: state.resume ? { ...state.resume, experience } : null,
+    })),
+
   updateProjects: (projects) =>
     set((state) => ({
       resume: state.resume ? { ...state.resume, projects } : null,
@@ -66,6 +78,16 @@ export const useResumeStore = create<ResumeStore>((set) => ({
   updateEducation: (education) =>
     set((state) => ({
       resume: state.resume ? { ...state.resume, education } : null,
+    })),
+
+  updateExtracurricular: (extracurricular) =>
+    set((state) => ({
+      resume: state.resume ? { ...state.resume, extracurricular } : null,
+    })),
+
+  updateCustomSections: (customSections) =>
+    set((state) => ({
+      resume: state.resume ? { ...state.resume, customSections } : null,
     })),
 
   reset: () => set({ rawText: "", resume: null }),

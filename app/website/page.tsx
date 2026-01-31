@@ -1,5 +1,5 @@
 import DomainInputField from "@/components/DomainInputField";
-import ResumeEditor from "@/components/ResumeEditor";
+import ResumePreview from "@/components/ResumeEditor";
 import StatusBtn from "@/components/StatusBtn";
 import { Button } from "@/components/ui/button";
 import LinkIcon from "@/components/ui/link-icon";
@@ -28,7 +28,7 @@ export default function Site() {
             </Button>
           </div>
         </div>
-        <ResumeEditor />
+        <ResumePreview />
       </div>
     </div>
   );
