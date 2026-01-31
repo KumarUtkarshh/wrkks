@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { useResumeStore } from "@/hooks/stores/useResumeStore";
 import { Education, Experience } from "@/lib/types";
 import { Plus, X } from "lucide-react";
+import EditSkillsDialog from "./EditSkillsDialog";
 
 export const ResumeEditor = () => {
   const {
@@ -387,29 +388,7 @@ export const ResumeEditor = () => {
                 </div>
               ))}
             </div>
-            <Button
-              onClick={addEducation}
-              variant="outline"
-              className={buttonClass}
-            >
-              <Plus size={16} className="mr-2" /> Add Skills
-            </Button>
-            <div className="flex gap-2">
-              <Input
-                placeholder="Press Enter to add skill..."
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    const val = e.currentTarget.value.trim();
-                    if (val) {
-                      updateSkills({
-                        languages: [...resume.skills.languages, val],
-                      });
-                      e.currentTarget.value = "";
-                    }
-                  }
-                }}
-              />
-            </div>
+            <EditSkillsDialog updateSkills={updateSkills} resume={resume} />
           </section>
         </div>
       </ScrollArea>
