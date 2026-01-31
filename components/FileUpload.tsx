@@ -9,6 +9,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { formatBytes, useFileUpload } from "@/hooks/use-file-upload";
+import GenerateBtn from "./GenerateBtn";
 
 export default function FileUpload() {
   const maxSize = 10 * 1024 * 1024; // 10MB default
@@ -109,6 +110,11 @@ export default function FileUpload() {
           </div>
         </div>
       )}
+
+      {/* UploadBtn */}
+      <div className="pt-10">
+        <GenerateBtn file={file && (file.file as File)} />
+      </div>
     </div>
   );
 }

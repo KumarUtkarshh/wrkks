@@ -1,0 +1,45 @@
+"use client";
+
+import { normalizeResume } from "@/lib/helpers";
+import { resume } from "@/output2";
+import { useState } from "react";
+import AnimatedIconButton from "./AnimatedBtn";
+import { ResumeCard } from "./resume/ResumeCard";
+import { ResumeEditor } from "./resume/ResumeEditor";
+import EyeIcon from "./ui/eye-icon";
+import PenIcon from "./ui/pen-icon";
+
+export default function ResumePreview() {
+  // const resume = useResumeStore((s) => s.resume);
+  // console.log(resume);
+
+  const [isEditMode, setisEditMode] = useState(false);
+
+  if (!resume) return <p>error</p>;
+
+  return (
+    <div>
+      <div className="flex tracking-wide justify-start gap-2.5 max-sm:w-full md:w-[80vw] max-sm:px-6">
+        <AnimatedIconButton
+          onClick={() => setisEditMode(false)}
+          icon={<EyeIcon className="-me-0.5" />}
+        >
+          Preview
+        </AnimatedIconButton>
+        <AnimatedIconButton
+          onClick={() => setisEditMode(true)}
+          icon={<PenIcon />}
+        >
+          Edit
+        </AnimatedIconButton>
+      </div>
+      <div className="min-h-screen justify-center flex py-12 px-4">
+        {isEditMode ? (
+          <ResumeEditor />
+        ) : (
+          <ResumeCard resume={normalizeResume(resume)} />
+        )}
+      </div>
+    </div>
+  );
+}
