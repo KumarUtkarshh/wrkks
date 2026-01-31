@@ -168,130 +168,163 @@ const ResumeCard = ({ resume }: Props) => {
   const githubUrl = normalizeUrl(resume.personalInfo.github);
   const linkedInUrl = normalizeUrl(resume.personalInfo.linkedin);
   const websiteUrl = normalizeUrl(resume.personalInfo.website);
+
+  // Helper to check if a string has actual content
+  const hasContent = (val?: string) => val && val.trim().length > 0;
+
   return (
-    <div className="bg-white rounded-lg min-h-screen p-4 sm:p-10 font-sans text-black antialiased border shadow-sm">
+    <div className="bg-background rounded-lg min-h-screen p-4 sm:p-10 font-sans text-foreground antialiased border transition-colors duration-300">
       <div className="max-w-2xl mx-auto text-left">
         {/* Header */}
-        <header className="flex justify-between items-start mb-8">
-          <div className="space-y-1">
-            <h1 className="text-3xl font-bold tracking-tighter leading-none">
-              {resume.personalInfo.name}
-            </h1>
-            <p className="text-[15px] text-gray-600 font-medium">
-              {resume.personalInfo.title}
-            </p>
-            <div className="text-[12px] text-gray-400 flex flex-wrap gap-x-3 mt-2">
-              <span className="flex items-center gap-1">
-                <MapPin size={12} /> {resume.personalInfo.location}
-              </span>
-              <span className="flex items-center gap-1">
-                <Phone size={12} /> {resume.personalInfo.phone}
-              </span>
-              <span className="flex items-center gap-1">
-                <Mail size={12} /> {resume.personalInfo.email}
-              </span>
-              {resume.personalInfo.website && (
-                <span className="flex items-center gap-1">
-                  <Globe size={12} /> {resume.personalInfo.website}
+        <header className="flex justify-between items-start mb-10 gap-4">
+          <div className="space-y-2">
+            {hasContent(resume.personalInfo.name) && (
+              <h1 className="text-4xl font-bold tracking-tighter leading-tight">
+                {resume.personalInfo.name}
+              </h1>
+            )}
+
+            {hasContent(resume.personalInfo.title) && (
+              <p className="text-lg text-muted-foreground font-medium">
+                {resume.personalInfo.title}
+              </p>
+            )}
+
+            <div className="text-sm text-muted-foreground/70 flex flex-wrap gap-x-4 mt-3">
+              {hasContent(resume.personalInfo.location) && (
+                <span className="flex items-center gap-1.5">
+                  <MapPin size={14} /> {resume.personalInfo.location}
+                </span>
+              )}
+              {hasContent(resume.personalInfo.phone) && (
+                <span className="flex items-center gap-1.5">
+                  <Phone size={14} /> {resume.personalInfo.phone}
+                </span>
+              )}
+              {hasContent(resume.personalInfo.email) && (
+                <span className="flex items-center gap-1.5">
+                  <Mail size={14} /> {resume.personalInfo.email}
                 </span>
               )}
             </div>
 
-            <div className="flex gap-2 pt-2">
-              {/* LinkedIn */}
-              {linkedInUrl && (
-                <a
-                  href={linkedInUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 border border-gray-200 rounded-md text-gray-400 hover:text-black hover:border-gray-400 transition-colors"
-                >
-                  <Linkedin size={14} strokeWidth={2.5} />
-                </a>
-              )}
-
-              {/* GitHub */}
-              {githubUrl && (
-                <a
-                  href={githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 border border-gray-200 rounded-md text-gray-400 hover:text-black hover:border-gray-400 transition-colors"
-                >
-                  <Github size={14} strokeWidth={2.5} />
-                </a>
-              )}
-
-              {/* Website/Portfolio */}
-              {websiteUrl && (
-                <a
-                  href={websiteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-1.5 border border-gray-200 rounded-md text-gray-400 hover:text-black hover:border-gray-400 transition-colors"
-                >
-                  <Globe size={14} strokeWidth={2.5} />
-                </a>
-              )}
-            </div>
+            {/* Social Links conditional block */}
+            {(linkedInUrl || githubUrl || websiteUrl) && (
+              <div className="flex gap-3 pt-3">
+                {linkedInUrl && (
+                  <a
+                    href={linkedInUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 border border-border rounded-md text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                  >
+                    <Linkedin size={18} strokeWidth={2} />
+                  </a>
+                )}
+                {githubUrl && (
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 border border-border rounded-md text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                  >
+                    <Github size={18} strokeWidth={2} />
+                  </a>
+                )}
+                {websiteUrl && (
+                  <a
+                    href={websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 border border-border rounded-md text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+                  >
+                    <Globe size={18} strokeWidth={2} />
+                  </a>
+                )}
+              </div>
+            )}
           </div>
-          <div className="w-20 h-20 rounded-xl bg-gray-50 border border-gray-100 shrink-0"></div>
+          <div className="w-24 h-24 rounded-xl bg-muted border border-border shrink-0"></div>
         </header>
 
         {/* About */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold mb-2">About</h2>
-          <p className="text-[13px] text-gray-500 leading-relaxed tracking-tight">
-            {resume.summary}
-          </p>
-        </section>
+        {hasContent(resume.summary) && (
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-3 border-b pb-1 border-border">
+              About
+            </h2>
+            <p className="text-[15px] text-muted-foreground leading-relaxed tracking-tight">
+              {resume.summary}
+            </p>
+          </section>
+        )}
 
         {/* Skills */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold mb-3">Skills</h2>
-          <div className="flex flex-wrap gap-1.5">
-            {[
-              ...resume.skills.languages,
-              ...resume.skills.frameworksAndTools,
-            ].map((skill, idx) => (
-              <span
-                key={idx}
-                className="px-2 py-0.5 bg-black text-white text-[10px] rounded-md font-medium"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
-        </section>
+        {(resume.skills.languages.length > 0 ||
+          resume.skills.frameworksAndTools.length > 0) && (
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-4 border-b pb-1 border-border">
+              Skills
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {[
+                ...resume.skills.languages,
+                ...resume.skills.frameworksAndTools,
+              ].map(
+                (skill, idx) =>
+                  hasContent(skill) && (
+                    <span
+                      key={idx}
+                      className="px-3 py-1 bg-primary text-primary-foreground text-xs rounded-md font-medium"
+                    >
+                      {skill}
+                    </span>
+                  ),
+              )}
+            </div>
+          </section>
+        )}
 
-        {/* Work Experience - NEW SECTION */}
+        {/* Work Experience */}
         {resume.experience.length > 0 && (
-          <section className="mb-8">
-            <h2 className="text-lg font-bold mb-4">Work Experience</h2>
-            <div className="space-y-6">
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-5 border-b pb-1 border-border">
+              Work Experience
+            </h2>
+            <div className="space-y-8">
               {resume.experience.map((exp, index) => (
-                <div key={index} className="space-y-1">
+                <div key={index} className="space-y-2">
                   <div className="flex justify-between items-baseline">
-                    <h3 className="text-[14px] font-bold tracking-tight">
+                    <h3 className="text-lg font-bold tracking-tight">
                       {exp.company}
                     </h3>
-                    <span className="text-[10px] text-gray-400 font-mono">
-                      {exp.startDate} — {exp.endDate}
-                    </span>
+                    {(hasContent(exp.startDate) || hasContent(exp.endDate)) && (
+                      <span className="text-xs text-muted-foreground font-mono bg-muted px-2 py-0.5 rounded">
+                        {exp.startDate}{" "}
+                        {hasContent(exp.endDate) && `— ${exp.endDate}`}
+                      </span>
+                    )}
                   </div>
-                  <p className="text-[12px] text-gray-600 italic leading-none">
-                    {exp.position}
-                  </p>
-                  <ul className="list-disc ml-4 mt-2 space-y-1">
-                    {exp.description.map((bullet, idx) => (
-                      <li
-                        key={idx}
-                        className="text-[12px] text-gray-500 leading-normal"
-                      >
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
+                  {hasContent(exp.position) && (
+                    <p className="text-[15px] text-primary font-medium italic">
+                      {exp.position}
+                    </p>
+                  )}
+                  {exp.description.length > 0 && (
+                    <ul className="list-disc ml-5 mt-2 space-y-2">
+                      {exp.description.map(
+                        (bullet, idx) =>
+                          hasContent(bullet) && (
+                            <li
+                              key={idx}
+                              className="text-[14px] text-muted-foreground leading-normal"
+                            >
+                              {bullet}
+                            </li>
+                          ),
+                      )}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
@@ -299,88 +332,82 @@ const ResumeCard = ({ resume }: Props) => {
         )}
 
         {/* Projects */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold mb-4">Projects</h2>
-          <div className="space-y-6">
-            {resume.projects.map((project, index) => (
-              <div key={index} className="space-y-1">
-                <div className="flex justify-between items-baseline">
-                  <h3 className="text-[14px] font-bold tracking-tight">
-                    {project.name}
-                  </h3>
-                  <span className="text-[10px] text-gray-400 font-mono">
-                    {project.startDate} — {project.endDate}
-                  </span>
+        {resume.projects.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-5 border-b pb-1 border-border">
+              Projects
+            </h2>
+            <div className="space-y-8">
+              {resume.projects.map((project, index) => (
+                <div key={index} className="space-y-2">
+                  <div className="flex justify-between items-baseline">
+                    <h3 className="text-lg font-bold tracking-tight">
+                      {project.name}
+                    </h3>
+                    {(hasContent(project.startDate) ||
+                      hasContent(project.endDate)) && (
+                      <span className="text-xs text-muted-foreground font-mono">
+                        {project.startDate}{" "}
+                        {hasContent(project.endDate) && `— ${project.endDate}`}
+                      </span>
+                    )}
+                  </div>
+                  {hasContent(project.link) && (
+                    <p className="text-[13px] text-primary font-mono hover:underline cursor-pointer truncate max-w-sm">
+                      {project.link}
+                    </p>
+                  )}
+                  {project.description.length > 0 && (
+                    <ul className="list-disc ml-5 space-y-2">
+                      {project.description.map(
+                        (bullet, idx) =>
+                          hasContent(bullet) && (
+                            <li
+                              key={idx}
+                              className="text-[14px] text-muted-foreground leading-normal"
+                            >
+                              {bullet}
+                            </li>
+                          ),
+                      )}
+                    </ul>
+                  )}
                 </div>
-                <p className="text-[11px] text-blue-600 font-mono truncate max-w-xs">
-                  {project.link}
-                </p>
-                <ul className="list-disc ml-4 space-y-1">
-                  {project.description.map((bullet, idx) => (
-                    <li
-                      key={idx}
-                      className="text-[12px] text-gray-500 leading-normal"
-                    >
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Education - Updated to handle Array */}
-        <section className="mb-8">
-          <h2 className="text-lg font-bold mb-3">Education</h2>
-          <div className="space-y-4">
-            {resume.education.map((edu, idx) => (
-              <div key={idx} className="flex justify-between items-start">
-                <div>
-                  <h3 className="text-[14px] font-bold">{edu.university}</h3>
-                  <p className="text-[12px] text-gray-600">
-                    {edu.degree} in {edu.branch} • {edu.sgpa} SGPA
-                  </p>
-                </div>
-                <span className="text-gray-400 text-[10px] font-mono whitespace-nowrap">
-                  {edu.startDate} - {edu.endDate}
-                </span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Custom Sections (Dynamic Other Data) */}
-        {resume.customSections?.map((section, idx) => (
-          <section key={idx} className="mb-8">
-            <h2 className="text-lg font-bold mb-3">{section.title}</h2>
-            <div className="flex flex-wrap gap-2">
-              {section.items.map((item, i) => (
-                <span
-                  key={i}
-                  className="text-[12px] text-gray-500 border-l-2 border-gray-100 pl-3"
-                >
-                  {item}
-                </span>
               ))}
             </div>
           </section>
-        ))}
+        )}
 
-        {/* Extracurricular */}
-        {resume.extracurricular.length > 0 && (
-          <section>
-            <h2 className="text-lg font-bold mb-3">Extracurricular</h2>
-            <ul className="space-y-2">
-              {resume.extracurricular.map((item, idx) => (
-                <li
-                  key={idx}
-                  className="text-[12px] text-gray-500 border-l-2 border-gray-100 pl-3"
-                >
-                  {item}
-                </li>
+        {/* Education */}
+        {resume.education.length > 0 && (
+          <section className="mb-10">
+            <h2 className="text-xl font-bold mb-4 border-b pb-1 border-border">
+              Education
+            </h2>
+            <div className="space-y-6">
+              {resume.education.map((edu, idx) => (
+                <div key={idx} className="flex justify-between items-start">
+                  <div className="space-y-1">
+                    <h3 className="text-lg font-bold">{edu.university}</h3>
+                    <div className="text-[15px] text-muted-foreground">
+                      {edu.degree}{" "}
+                      {hasContent(edu.branch) && `in ${edu.branch}`}
+                    </div>
+                    {hasContent(edu.sgpa) && (
+                      <p className="text-sm font-medium text-primary">
+                        SGPA: {edu.sgpa}
+                      </p>
+                    )}
+                  </div>
+                  {(hasContent(edu.startDate) || hasContent(edu.endDate)) && (
+                    <span className="text-muted-foreground text-xs font-mono whitespace-nowrap bg-muted px-2 py-0.5 rounded">
+                      {edu.startDate}{" "}
+                      {hasContent(edu.endDate) && `- ${edu.endDate}`}
+                    </span>
+                  )}
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
         )}
       </div>
