@@ -25,7 +25,7 @@ export default function NavBar() {
           Wrkks
         </a>
         {/* Navigation menu */}
-        <NavigationMenu className="pl-8">
+        <NavigationMenu className="pl-8 md:pl-7">
           <NavigationMenuList className="gap-2">
             {navigationLinks.map((link, index) => (
               <NavigationMenuItem key={String(index)}>
