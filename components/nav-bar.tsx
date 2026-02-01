@@ -6,7 +6,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import { UserIcon } from "lucide-react";
 import SignUpBtn from "./SignUpBtn";
-import SyncUser from "./SyncUser";
 import { ThemeToggle } from "./ThemeToggle";
 import ArrowBigUpDashIcon from "./ui/arrow-big-up-dash-icon";
 import HomeIcon from "./ui/home-icon";
@@ -21,10 +20,13 @@ const navigationLinks = [
 export default function NavBar() {
   return (
     <header className="border-b mt-1 md:px-36 px-4 transition-all">
-      <div className="relative flex h-16 items-center">
+      <div className="relative z-10 flex h-16 items-center">
         {/* Left side */}
         <div className="flex items-center gap-4">
-          <a className="text-primary hover:text-primary/90" href="#">
+          <a
+            className="text-primary tracking-wide font-semibold hover:text-primary/90"
+            href="#"
+          >
             Wrkks
           </a>
         </div>
@@ -48,7 +50,6 @@ export default function NavBar() {
         {/* Right side */}
         <div className="ml-auto flex items-center gap-4">
           <ThemeToggle />
-          <SyncUser />
           <SignUpBtn />
         </div>
       </div>

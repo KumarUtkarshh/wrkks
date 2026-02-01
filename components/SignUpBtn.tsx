@@ -1,4 +1,5 @@
 import { SignedIn, SignedOut, SignUpButton, UserButton } from "@clerk/nextjs";
+import { Suspense } from "react";
 import { Button } from "./ui/button";
 
 export default function SignUpBtn() {
@@ -14,9 +15,11 @@ export default function SignUpBtn() {
           </Button>
         </SignUpButton>
       </SignedOut>
-      <SignedIn>
-        <UserButton />
-      </SignedIn>
+      <Suspense fallback={<div>hello</div>}>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </Suspense>
     </div>
   );
 }
