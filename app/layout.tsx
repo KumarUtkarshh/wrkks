@@ -1,4 +1,3 @@
-import NavBar from "@/components/nav-bar";
 import SyncUser from "@/components/SyncUser";
 import { AnchoredToastProvider, ToastProvider } from "@/components/ui/toast";
 import { TanStackQueryProvider } from "@/providers/tanstack-provider";
@@ -44,7 +43,6 @@ export default function RootLayout({
                   disableTransitionOnChange
                 >
                   <SyncUser />
-                  <NavBar />
                   {children}
                 </ThemeProvider>
               </AnchoredToastProvider>
