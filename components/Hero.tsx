@@ -1,5 +1,6 @@
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import Link from "next/link";
+import HomeActionBtn from "./BuildMyWebsiteBtn";
 import Timeline from "./timeline";
 
 const Hero = () => (
@@ -38,15 +39,7 @@ const Hero = () => (
       </p>
 
       {/* Responsive CTA Buttons */}
-      <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <Link
-          href="#"
-          className="w-full sm:w-auto px-7 py-3.5 bg-slate-900 dark:bg-white text-white dark:text-black font-semibold rounded-full shadow-lg hover:opacity-90 transition-all flex items-center justify-center group"
-        >
-          Build My Website
-          <ArrowRight className="ml-2.5 size-4 group-hover:translate-x-1 transition-transform" />
-        </Link>
-      </div>
+      <HomeActionBtn />
     </div>
 
     <Timeline />
