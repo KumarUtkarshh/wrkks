@@ -5,7 +5,13 @@ import { createClient } from "@/lib/supabase/server";
 import { auth } from "@clerk/nextjs/server";
 
 // 👇 only allow real columns
-type UserField = "id" | "email" | "username" | "resume" | "created_at";
+type UserField =
+  | "id"
+  | "email"
+  | "username"
+  | "resume"
+  | "created_at"
+  | "islive";
 
 export async function getUserData(fields?: UserField[]) {
   const supabase = await createClient();

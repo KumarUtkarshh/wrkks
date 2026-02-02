@@ -1,24 +1,30 @@
-export default function StatusBtn({
-  status,
-  isDraft = false,
-}: {
-  status: string;
-  isDraft?: boolean;
-}) {
+"use client";
+import { getUserData } from "@/lib/supabase/getUserData";
+import { useQuery } from "@tanstack/react-query";
+
+export default function StatusBtn() {
+  const { data } = useQuery({
+    queryKey: ["islive"],
+    queryFn: async () => getUserData(["islive"]),
+    placeholderData: { islive: false },
+  });
+
+  const islive = data?.islive ?? false;
+
   return (
     <div className="flex items-center gap-1">
       <button className="flex items-center gap-1 hover:opacity-80 transition-opacity">
         <div
-          className={`size-1.5 rounded-full relative ${isDraft ? "bg-yellow-300" : "bg-[#009505]"}`}
+          className={`size-1.5 rounded-full relative ${islive ? "bg-[#009505]" : "bg-yellow-300"}`}
         >
           <div
-            className={`absolute inset-0 rounded-full ${isDraft ? "bg-orange-300" : "bg-[#009505]"} animate-ping opacity-50`}
+            className={`absolute inset-0 rounded-full ${islive ? "bg-[#009505]" : "bg-orange-300"} animate-ping opacity-50`}
           ></div>
         </div>
         <p
-          className={`text-[10px] font-bold ${isDraft ? "text-yellow-300" : "text-[#009505]"} uppercase`}
+          className={`text-[10px] font-bold ${islive ? "text-[#009505]" : "text-yellow-300"} uppercase`}
         >
-          {status}
+          {islive ? "live" : "draft"}
         </p>
       </button>
     </div>
