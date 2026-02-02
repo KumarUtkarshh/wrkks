@@ -16,9 +16,7 @@ export default async function SyncUser() {
     .single();
 
   if (!existingUser) {
-    const username =
-      clerkUser.username ||
-      clerkUser.emailAddresses[0].emailAddress.split("@")[0];
+    const username = clerkUser.emailAddresses[0].emailAddress.split("@")[0];
 
     await supabase.from("users").insert({
       clerk_user_id: clerkUser.id,

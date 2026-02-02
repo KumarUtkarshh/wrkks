@@ -2,7 +2,6 @@
 
 import { normalizeResume } from "@/lib/helpers";
 import { Resume } from "@/lib/types";
-import { resume } from "@/output2";
 import { create } from "zustand";
 
 type ResumeStore = {
@@ -28,11 +27,11 @@ type ResumeStore = {
 
 export const useResumeStore = create<ResumeStore>((set) => ({
   rawText: "",
-  resume: normalizeResume(resume),
+  resume: null,
 
   setRawText: (text) => set({ rawText: text }),
 
-  setResume: (resume) => set({ resume }),
+  setResume: (resume) => set({ resume: normalizeResume(resume) }),
 
   updatePersonalInfo: (info) =>
     set((state) => ({
