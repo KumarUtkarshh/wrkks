@@ -98,6 +98,7 @@ export const ResumeEditor = () => {
                 <label className={labelClass}>Name</label>
                 <Input
                   value={resume.personalInfo.name}
+                  placeholder="Elon Tusk"
                   onChange={(e) => updatePersonalInfo({ name: e.target.value })}
                 />
               </div>
@@ -105,6 +106,7 @@ export const ResumeEditor = () => {
                 <label className={labelClass}>Headline</label>
                 <Input
                   value={resume.personalInfo.title}
+                  placeholder="CEO of X-tra Large Projects"
                   onChange={(e) =>
                     updatePersonalInfo({ title: e.target.value })
                   }
@@ -114,6 +116,7 @@ export const ResumeEditor = () => {
                 <label className={labelClass}>Location</label>
                 <Input
                   value={resume.personalInfo.location}
+                  placeholder="Starbase, Texas / Orbit"
                   onChange={(e) =>
                     updatePersonalInfo({ location: e.target.value })
                   }
@@ -125,6 +128,7 @@ export const ResumeEditor = () => {
               <label className={labelClass}>Short About</label>
               <Textarea
                 className="min-h-25"
+                placeholder="Highly motivated multi-planet entrepreneur with a proven track record of disrupting industries that didn't even know they were broken. Expert in first-principles thinking, 80-hour work weeks, and naming children after Wi-Fi passwords. Currently seeking to move humanity's 'production' environment to Mars because Earth's 'staging' server is getting too crowded."
                 value={resume.summary}
                 onChange={(e) => updateSummary(e.target.value)}
               />
@@ -135,6 +139,7 @@ export const ResumeEditor = () => {
                 <label className={labelClass}>Email</label>
                 <Input
                   value={resume.personalInfo.email}
+                  placeholder="tusk@x.com"
                   onChange={(e) =>
                     updatePersonalInfo({ email: e.target.value })
                   }
