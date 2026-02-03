@@ -26,7 +26,9 @@ export default function SignUpBtn() {
           </SignUpButton>
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <div className="size-7.5">
+            <UserButton />
+          </div>
         </SignedIn>
       </ClerkLoaded>
     </div>
