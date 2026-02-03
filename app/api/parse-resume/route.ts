@@ -1,10 +1,6 @@
-import { NextRequest, NextResponse } from "next/server";
-import * as PdfParse from "pdf-parse-new";
+export const runtime = "nodejs";
 
-const parser = new PdfParse.SmartPDFParser({
-  oversaturationFactor: 2.0,
-  enableFastPath: true,
-});
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
   try {
@@ -16,6 +12,13 @@ export async function POST(req: NextRequest) {
         { status: 400 },
       );
     }
+
+    const PdfParse = await import("pdf-parse-new");
+
+    const parser = new PdfParse.SmartPDFParser({
+      oversaturationFactor: 2.0,
+      enableFastPath: true,
+    });
 
     const buffer = Buffer.from(await file.arrayBuffer());
 

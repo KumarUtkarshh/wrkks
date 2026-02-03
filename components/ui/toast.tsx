@@ -9,8 +9,8 @@ import {
   TriangleAlertIcon,
 } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const toastManager = Toast.createToastManager();
 const anchoredToastManager = Toast.createToastManager();
@@ -151,7 +151,7 @@ function Toasts({ position = "bottom-right" }: { position: ToastPosition }) {
                 </div>
                 {toast.actionProps && (
                   <Toast.Action
-                    className={buttonVariants({ size: "xs" })}
+                    className={buttonVariants({ size: "sm" })}
                     data-slot="toast-action"
                   >
                     {toast.actionProps.children}
@@ -243,7 +243,7 @@ function AnchoredToasts() {
                     </div>
                     {toast.actionProps && (
                       <Toast.Action
-                        className={buttonVariants({ size: "xs" })}
+                        className={buttonVariants({ size: "sm" })}
                         data-slot="toast-action"
                       >
                         {toast.actionProps.children}
@@ -261,9 +261,9 @@ function AnchoredToasts() {
 }
 
 export {
+  anchoredToastManager,
+  AnchoredToastProvider,
+  toastManager,
   ToastProvider,
   type ToastPosition,
-  toastManager,
-  AnchoredToastProvider,
-  anchoredToastManager,
 };
