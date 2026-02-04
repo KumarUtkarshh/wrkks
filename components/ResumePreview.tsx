@@ -2,6 +2,7 @@
 
 import { useResumeStore } from "@/hooks/stores/useResumeStore";
 import { normalizeResume } from "@/lib/helpers";
+import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import AnimatedIconButton from "./AnimatedBtn";
 import { NotFoundPage } from "./NotFound";
@@ -13,10 +14,11 @@ import PenIcon from "./ui/pen-icon";
 export default function ResumePreview() {
   const resume = useResumeStore((s) => s.resume);
   const [isEditMode, setisEditMode] = useState(false);
+  const { user } = useUser();
 
   const normalizedResume = normalizeResume(resume);
 
-  if (!resume) return <NotFoundPage />;
+  if (!resume || !user) return <NotFoundPage />;
 
   return (
     <div>
@@ -38,7 +40,7 @@ export default function ResumePreview() {
         {isEditMode ? (
           <ResumeEditor />
         ) : (
-          <ResumeCard resume={normalizedResume} />
+          <ResumeCard resume={normalizedResume} clerkId={user.id} />
         )}
       </div>
     </div>

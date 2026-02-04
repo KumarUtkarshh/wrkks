@@ -5,9 +5,9 @@ import ResumeImage from "../ResumeImage";
 import GithubIcon from "../ui/github-icon";
 import TwitterXIcon from "../ui/twitter-x-icon";
 
-type Props = { resume: Resume };
+type Props = { resume: Resume; clerkId: string };
 
-export const ResumeCard = ({ resume }: Props) => {
+export const ResumeCard = ({ resume, clerkId }: Props) => {
   const githubUrl = normalizeUrl(resume.personalInfo.github);
   const linkedInUrl = normalizeUrl(resume.personalInfo.linkedin);
   const websiteUrl = normalizeUrl(resume.personalInfo.website);
@@ -98,7 +98,7 @@ export const ResumeCard = ({ resume }: Props) => {
               </div>
             )}
           </div>
-          <ResumeImage />
+          <ResumeImage userid={clerkId} />
         </header>
 
         {/* About */}
