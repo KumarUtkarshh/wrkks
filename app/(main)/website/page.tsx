@@ -18,10 +18,10 @@ export default async function WebSite() {
           <div className="flex gap-1.5 items-center max-[915px]:text-sm">
             <LinkIcon size={17} className="mt-1" />
             <div>wrkks.vercel.app&nbsp;/</div>
-            <DomainInputField username={userdata.username} />
+            <DomainInputField username={userdata?.username ?? ""} />
           </div>
           <div className="gap-2.5 flex justify-center tracking-wide max-[915px]:mt-4">
-            <StatusBtn islive={userdata.islive} />
+            <StatusBtn islive={userdata?.islive ?? false} />
             <PublishButton data={userdata} />
           </div>
         </div>
