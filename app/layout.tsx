@@ -2,6 +2,7 @@ import SyncUser from "@/components/SyncUser";
 import { AnchoredToastProvider, ToastProvider } from "@/components/ui/toast";
 import { TanStackQueryProvider } from "@/providers/tanstack-provider";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Bricolage_Grotesque, Geist_Mono } from "next/font/google";
@@ -155,6 +156,7 @@ export default function RootLayout({
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
                   />
+                  <Analytics />
                 </ThemeProvider>
               </AnchoredToastProvider>
             </ToastProvider>
