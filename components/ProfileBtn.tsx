@@ -12,10 +12,10 @@ export default async function ProfileBtn({
   return isMobile ? (
     <Link
       href={data !== null ? `/${data.username}` : "/"}
-      className="flex cursor-pointer items-center gap-2.5 ml-2 text-sm py-1"
+      className="flex cursor-pointer items-center gap-2.5 ml-2 text-sm py-1.5"
     >
       <UserIcon className="text-muted-foreground" size={17} />
-      My Site
+      My Wrkk
     </Link>
   ) : (
     <Link

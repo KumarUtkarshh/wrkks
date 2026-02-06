@@ -10,11 +10,13 @@ import { ThemeToggle } from "./ThemeToggle";
 import ArrowBigUpDashIcon from "./ui/arrow-big-up-dash-icon";
 import { Button } from "./ui/button";
 import HomeIcon from "./ui/home-icon";
+import PenIcon from "./ui/pen-icon";
 import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
   { href: "/", label: <HomeIcon />, text: "Home" },
+  { href: "/website", label: <PenIcon />, text: "Edit website" },
   { href: "/upload", label: <ArrowBigUpDashIcon />, text: "Upload" },
 ];
 
