@@ -1,7 +1,9 @@
+import PublishButton, {
+  LiveStatusAndUsername,
+} from "@/components/buttons/PublishBtn";
+import StatusBtn from "@/components/buttons/StatusBtn";
 import DomainInputField from "@/components/DomainInputField";
-import PublishButton, { LiveStatusAndUsername } from "@/components/PublishBtn";
-import ResumePreview from "@/components/ResumePreview";
-import StatusBtn from "@/components/StatusBtn";
+import ResumePreview from "@/components/resume/ResumePreview";
 import LinkIcon from "@/components/ui/link-icon";
 import { getUserData } from "@/lib/supabase/user/getUserData";
 

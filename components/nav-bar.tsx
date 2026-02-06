@@ -4,8 +4,8 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
-import ProfileBtn from "./ProfileBtn";
-import SignUpBtn from "./SignUpBtn";
+import ProfileBtn from "./buttons/ProfileBtn";
+import SignUpBtn from "./buttons/SignUpBtn";
 import { ThemeToggle } from "./ThemeToggle";
 import ArrowBigUpDashIcon from "./ui/arrow-big-up-dash-icon";
 import { Button } from "./ui/button";

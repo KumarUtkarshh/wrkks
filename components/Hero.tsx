@@ -1,7 +1,7 @@
 import { Sparkles } from "lucide-react";
 import Link from "next/link";
-import HomeActionBtn from "./BuildMyWebsiteBtn";
-import ShareBtn from "./ShareBtn";
+import HomeActionBtn from "./buttons/BuildMyWebsiteBtn";
+import ShareBtn from "./buttons/ShareBtn";
 import Timeline from "./timeline";
 
 const Hero = () => (

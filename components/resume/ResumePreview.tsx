@@ -4,12 +4,12 @@ import { useResumeStore } from "@/hooks/stores/useResumeStore";
 import { normalizeResume } from "@/lib/helpers";
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
-import AnimatedIconButton from "./AnimatedBtn";
-import { NotFoundPage } from "./NotFound";
-import { ResumeCard } from "./resume/ResumeCard";
-import { ResumeEditor } from "./resume/ResumeEditor";
-import EyeIcon from "./ui/eye-icon";
-import PenIcon from "./ui/pen-icon";
+import AnimatedIconButton from "../buttons/AnimatedBtn";
+import { NotFoundPage } from "../NotFound";
+import EyeIcon from "../ui/eye-icon";
+import PenIcon from "../ui/pen-icon";
+import { ResumeCard } from "./ResumeCard";
+import { ResumeEditor } from "./ResumeEditor";
 
 export default function ResumePreview() {
   const resume = useResumeStore((s) => s.resume);

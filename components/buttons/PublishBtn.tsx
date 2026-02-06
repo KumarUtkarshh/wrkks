@@ -5,8 +5,8 @@ import { publishResume } from "@/lib/supabase/resume/publishResume";
 import { Resume } from "@/lib/types";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { Button } from "./ui/button";
-import { toastManager } from "./ui/toast";
+import { Button } from "../ui/button";
+import { toastManager } from "../ui/toast";
 
 export type LiveStatusAndUsername = {
   islive: boolean;

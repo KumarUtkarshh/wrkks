@@ -1,9 +1,9 @@
 import { normalizeUrl } from "@/lib/helpers";
 import { Resume } from "@/lib/types";
 import { Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
-import ResumeImage from "../ResumeImage";
 import GithubIcon from "../ui/github-icon";
 import TwitterXIcon from "../ui/twitter-x-icon";
+import ResumeImage from "./ResumeImage";
 
 type Props = { resume: Resume; clerkId: string };
 

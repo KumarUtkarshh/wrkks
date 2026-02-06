@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cloneElement, ReactElement, useRef } from "react";
-import { AnimatedIconHandle } from "./ui/types";
+import { AnimatedIconHandle } from "../ui/types";
 
 type AnimatedIconButtonProps = {
   icon: ReactElement;

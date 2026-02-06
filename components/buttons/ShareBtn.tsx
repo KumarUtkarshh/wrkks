@@ -3,8 +3,8 @@
 import { getShareUrl } from "@/lib/supabase/user/getShareUrl";
 import { Check, Loader2, Share2 } from "lucide-react";
 import { useState } from "react";
-import { Button } from "./ui/button";
-import { toastManager } from "./ui/toast";
+import { Button } from "../ui/button";
+import { toastManager } from "../ui/toast";
 
 export default function ShareBtn() {
   const [loading, setLoading] = useState(false);

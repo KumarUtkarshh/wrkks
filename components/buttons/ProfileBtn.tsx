@@ -1,6 +1,6 @@
 import { getUserData } from "@/lib/supabase/user/getUserData";
+import { UserIcon } from "lucide-react";
 import Link from "next/link";
-import UserIcon from "./ui/user-icon";
 
 export default async function ProfileBtn({
   isMobile = false,

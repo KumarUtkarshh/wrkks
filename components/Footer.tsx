@@ -1,6 +1,6 @@
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
-import AnimatedIconButton from "./AnimatedBtn";
+import AnimatedIconButton from "./buttons/AnimatedBtn";
 import GitHubIcon from "./ui/github-icon";
 import TwitterIcon from "./ui/twitter-x-icon";
 
