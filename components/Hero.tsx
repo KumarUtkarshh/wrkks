@@ -1,6 +1,7 @@
 import { Sparkles } from "lucide-react";
 import Link from "next/link";
 import HomeActionBtn from "./BuildMyWebsiteBtn";
+import ShareBtn from "./ShareBtn";
 import Timeline from "./timeline";
 
 const Hero = () => (
@@ -39,7 +40,18 @@ const Hero = () => (
       </p>
 
       {/* Responsive CTA Buttons */}
-      <HomeActionBtn />
+      {/* Responsive CTA Container */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 w-full max-w-md mx-auto md:max-w-none">
+        {/* Primary Action */}
+        <div className="w-full md:w-auto">
+          <HomeActionBtn />
+        </div>
+
+        {/* Secondary Action */}
+        <div className="w-full md:w-auto">
+          <ShareBtn />
+        </div>
+      </div>
     </div>
 
     <Timeline />

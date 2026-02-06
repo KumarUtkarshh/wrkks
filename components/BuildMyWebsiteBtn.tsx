@@ -8,7 +8,7 @@ export default function HomeActionBtn() {
   const { isSignedIn } = useAuth();
 
   return (
-    <div className="mt-10 flex cursor-pointer flex-col sm:flex-row items-center justify-center gap-4">
+    <div className="flex cursor-pointer flex-col sm:flex-row items-center justify-center gap-4">
       {isSignedIn ? (
         <Link
           href={isSignedIn ? "/upload" : "#"}
