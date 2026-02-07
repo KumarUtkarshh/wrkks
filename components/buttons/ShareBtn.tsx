@@ -2,6 +2,7 @@
 
 import { getShareUrl } from "@/lib/supabase/user/getShareUrl";
 import { Check, Loader2, Share2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Button } from "../ui/button";
 import { toastManager } from "../ui/toast";
@@ -9,12 +10,18 @@ import { toastManager } from "../ui/toast";
 export default function ShareBtn() {
   const [loading, setLoading] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const router = useRouter();
 
   const handleShare = async () => {
     setLoading(true);
     try {
       // Fetch the specific URL from the server action
       const shareUrl = await getShareUrl();
+
+      if (!shareUrl) {
+        router.push("/upload");
+        return;
+      }
 
       const shareData = {
         title: "Wrkks - Resume to Website",
